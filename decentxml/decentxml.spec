@@ -5,18 +5,21 @@ Version:          1.4
 Release:          19%{?dist}
 Summary:          XML parser optimized for round-tripping and code reuse
 License:          BSD
-URL:              http://code.google.com/p/%{name}
+# Google Code has shut down.
+# URL:            http://code.google.com/p/decentxml
+URL:              https://bitbucker.org/digulla/%{name}
 BuildArch:        noarch
 
 # Google Code has shut down.
-# Source0:          https://decentxml.googlecode.com/files/decentxml-1.4-src.zip
-
-# This version is equivalent other than folder structure due to how BitBucket
-# makes zip archives:
+# Source0:        https://decentxml.googlecode.com/files/decentxml-1.4-src.zip
+#
+# This version is equivalent to the last Google Code release, other than
+# folder structure due to how BitBucket makes zip archives:
+#
 # decentxml-1.4 -> digulla-decentxml-572a0baa91d1
 Source0:          https://bitbucket.org/digulla/%{name}/get/r%{version}.zip
 
-# for running w3c conformance test suite
+# For running w3c conformance test suite.
 Source1:          http://www.w3.org/XML/Test/xmlts20031210.zip
 
 BuildRequires:  maven-local
@@ -44,8 +47,9 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n digulla-%{name}-%{revision}
-# we are looking for xml conformance data one lever above so unzip
-# here and symlink there
+
+# We are looking for xml conformance data one lever above so unzip
+# here and symlink there.
 unzip %{SOURCE1}
 ln -sf %{name}-%{version}/xmlconf ../xmlconf
 sed -i -e "s|junit-dep|junit|g" pom.xml
