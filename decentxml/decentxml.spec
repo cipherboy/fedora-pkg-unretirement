@@ -7,14 +7,14 @@ Summary:          XML parser optimized for round-tripping and code reuse
 License:          BSD
 # Google Code has shut down.
 # URL:            http://code.google.com/p/decentxml
-URL:              https://bitbucker.org/digulla/%{name}
+URL:              https://bitbucket.org/digulla/%{name}
 BuildArch:        noarch
 
 # Google Code has shut down.
 # Source0:        https://decentxml.googlecode.com/files/decentxml-1.4-src.zip
 #
 # This version is equivalent to the last Google Code release, other than
-# folder structure due to how BitBucket makes zip archives:
+# folder structure due to how Bitbucket makes zip archives:
 #
 # decentxml-1.4 -> digulla-decentxml-572a0baa91d1
 Source0:          https://bitbucket.org/digulla/%{name}/get/r%{version}.zip
@@ -31,7 +31,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 %description
 XML parser optimized for round-tripping and code reuse with main
 features being:
- * Allows 100% round-tripping, even for weird whitespace between
+ * Allows 100% round-tripping, even for weird white-space between
    attributes in the start tag or in the end tag
  * Suitable for building editors and filters which want/need to
    preserve the original file layout as much as possible
@@ -71,10 +71,11 @@ sed -i '/not_wf_sa_16[89] /d' src/test/java/de/pdark/decentxml/XMLConformanceTes
 %mvn_install
 
 %files -f .mfiles
-%doc LICENSE README
+%license LICENSE
+%doc README
 
 %files javadoc -f .mfiles-javadoc
-%doc LICENSE
+%license LICENSE
 
 %changelog
 * Thu Dec 12 2019 Alexander Scheel <ascheel@redhat.com> - 1.4-20
